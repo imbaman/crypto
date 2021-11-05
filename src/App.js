@@ -1,24 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
+import {
+  Navbar,
+  Home,
+  Crypto,
+  CryptoDetails,
+  Exchanges,
+  Layout,
+} from "./components";
+import { Container, CssBaseline, Typography } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Box } from "@mui/system";
+
+const theme = createTheme({
+  palette: {
+    background: {
+      main: "#F4F4F4",
+    },
+    text: {
+      primary: "#173A5E",
+      secondary: "#46505A",
+    },
+    action: {
+      active: "#001E3C",
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <div className='App'>
+          <Navbar />
+          <Layout>
+            <Switch>
+              <Route exact path='/'>
+                <Home />
+              </Route>
+              <Route exact path='/crypto'>
+                <Crypto />
+              </Route>
+              <Route exact path='/crypto/:id'>
+                <CryptoDetails />
+              </Route>
+              <Route exact path='/exchanges'>
+                <Exchanges />
+              </Route>
+            </Switch>
+          </Layout>
+        </div>
+      </Router>
+      <Box>
+        <Typography sx={{ bgcolor: "#D1E8E4", p: 2 }} align='center'>
+          footer
+        </Typography>
+      </Box>
+    </ThemeProvider>
   );
 }
 
