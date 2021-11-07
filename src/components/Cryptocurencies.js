@@ -47,7 +47,10 @@ const Cryptocurencies = ({ simplified }) => {
       )}
 
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1} columns={{ xs: 4, sm: 6, md: 8 }}>
+        <Grid
+          container
+          spacing={{ xs: 1, md: 2 }}
+          columns={{ xs: 4, sm: 6, md: 12 }}>
           {/* {Array.from(Array(10)).map((_, index) => (
           <Grid item xs={2} sm={4} md={4} key={index}>
             <Item>xs=2</Item>
@@ -55,13 +58,13 @@ const Cryptocurencies = ({ simplified }) => {
         ))} */}
 
           {cryptos?.map((currency) => (
-            <Grid item xs={6} sm={4} md={2} key={currency.id}>
+            <Grid item key={currency.id} xs={12} sm={3} md={4} lg={3}>
               <Link to={`/crypto/${currency.id}`}>
                 <Card
                   sx={{
                     display: "flex",
-                    minWidth: 250,
-                    maxWidth: 300,
+                    minWidth: 180,
+                    // maxWidth: 220,
                     height: 180,
                     justifyContent: "space-between",
                     alignItems: "center",
