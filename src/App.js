@@ -15,11 +15,12 @@ import { Box } from "@mui/system";
 const theme = createTheme({
   palette: {
     background: {
-      main: "#F4F4F4",
+      main: "rgb(33, 33, 33)",
+      second: "rgb(38,38,38)",
     },
     text: {
-      primary: "#173A5E",
-      secondary: "#46505A",
+      primary: "rgb(255, 255, 255)",
+      secondary: "rgb(255, 255, 255)",
     },
     action: {
       active: "#001E3C",

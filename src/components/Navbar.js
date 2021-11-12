@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Cloud, Home } from "@mui/icons-material";
+import { red } from "@mui/material/colors";
 const drawerWidth = 250;
 
 const Navbar = () => {
@@ -23,7 +24,9 @@ const Navbar = () => {
           width: drawerWidth,
           boxSizing: "border-box",
           // display: "flex",
-          color: "#69dadb",
+          color: "rgba(38, 38, 38, 0.3)",
+          bgcolor: "background.second",
+          borderRight: 1,
         },
       }}
       variant='permanent'
@@ -34,7 +37,7 @@ const Navbar = () => {
           <Link to='/'>Test Logo</Link>
         </Typography>
       </div>
-      <Divider />
+      <Divider sx={{ borderBottom: 1, color: "rgba(38, 38, 38, 0.3)" }} />
       <div className='content'>
         <MenuList id='fade-menu'>
           <MenuItem>

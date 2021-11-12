@@ -5,22 +5,25 @@ import { Box } from "@mui/system";
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <>
       <Box
         sx={{
           bgcolor: "background.main",
+          color: "#00000",
+
           width: "100%",
           //   maxWidth: "xs",
           // height: "100vh",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "flex-start",
+          // minWidth: "1500px",
           p: 4,
         }}
         lg={{ minWidth: "1200px" }}>
         {children}
       </Box>
-    </div>
+    </>
   );
 };
 
