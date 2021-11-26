@@ -1,14 +1,16 @@
-import React from "react";
+import { React, useState } from "react";
 import { useParams } from "react-router";
 import { useGetCryptoDetailsQuery } from "../services/cryptoApi";
 import millify from "millify";
-import { Container, Typography } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
 const CryptoDetails = () => {
   let { id } = useParams();
+  const [timeperiod, setTimeperiod] = useState("1W");
   const { data, isFetching } = useGetCryptoDetailsQuery(id);
   console.log(data);
+
   const cryptoDetails = data?.data?.coin;
   if (isFetching) return "loading...";
   const time = ["1H", "4H", "1D", "1W", "1M", "1Y", "ALL"];
@@ -48,10 +50,32 @@ const CryptoDetails = () => {
     <>
       <Container>
         <Box>
-          <Typography variant='h2' component='div' gutterBottom>
+          <Typography
+            variant='h2'
+            component='div'
+            style={{ display: "inline" }}
+            sx={{ mr: 1 }}>
             {data?.data?.coin.name}
           </Typography>
-          <p>({data?.data?.coin.slug})</p>
+          <span style={{ display: "inline" }}>{data?.data?.coin.slug}</span>
+          <p>social media</p>
+          <Typography variant='h1' coponent='div'>
+            $
+            {millify(cryptoDetails.price, {
+              precision: 5,
+              decimalSeparator: ",",
+            })}
+          </Typography>
+          <Box>
+            {time.map((time) => (
+              <Button
+                key={time}
+                onClick={(value) => setTimeperiod(value.target.innerText)}>
+                {time}
+              </Button>
+            ))}
+            {timeperiod}
+          </Box>
         </Box>
       </Container>
     </>
