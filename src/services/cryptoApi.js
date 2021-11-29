@@ -19,10 +19,18 @@ export const cryptoApi = createApi({
     getCryptoDetails: builder.query({
       query: (id) => createRequest(`/coin/${id}`),
     }),
+    getCryptoHistory: builder.query({
+      query: ({ id, timeperiod }) =>
+        createRequest(`/coin/${id}/history/${timeperiod}`),
+    }),
   }),
 });
 
-export const { useGetCryptosQuery, useGetCryptoDetailsQuery } = cryptoApi;
+export const {
+  useGetCryptosQuery,
+  useGetCryptoDetailsQuery,
+  useGetCryptoHistoryQuery,
+} = cryptoApi;
 // var options = {
 //     method: 'GET',
 //     url: 'https://coinranking1.p.rapidapi.com/stats',
