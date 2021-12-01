@@ -1,19 +1,28 @@
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 import { useParams } from "react-router";
-import { useGetCryptoDetailsQuery } from "../services/cryptoApi";
+import {
+  useGetCryptoDetailsQuery,
+  useGetCryptoHistoryQuery,
+} from "../services/cryptoApi";
 import millify from "millify";
 import { Button, Container, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import Chart from "./Chart";
 
 const CryptoDetails = () => {
   let { id } = useParams();
-  const [timeperiod, setTimeperiod] = useState("1W");
+  const [timeperiod, setTimeperiod] = useState("24h");
   const { data, isFetching } = useGetCryptoDetailsQuery(id);
-  console.log(data);
+  const { data: coinHistory } = useGetCryptoHistoryQuery({ id, timeperiod });
+
+  console.log(data, "wtf");
+  console.log(coinHistory, "coin history");
+  console.log(timeperiod);
 
   const cryptoDetails = data?.data?.coin;
   if (isFetching) return "loading...";
-  const time = ["1H", "4H", "1D", "1W", "1M", "1Y", "ALL"];
+
+  const time = ["3h", "24h", "7d", "30d", "3m", "1y"];
 
   const stats = [
     {
@@ -70,13 +79,20 @@ const CryptoDetails = () => {
             {time.map((time) => (
               <Button
                 key={time}
-                onClick={(value) => setTimeperiod(value.target.innerText)}>
+                onClick={(time) => {
+                  setTimeperiod(time.target.innerText);
+                }}>
                 {time}
               </Button>
             ))}
             {timeperiod}
           </Box>
         </Box>
+        <Chart
+          coinHistory={coinHistory}
+          currentPrice={millify(cryptoDetails.price)}
+          coinName={cryptoDetails.name}
+        />
       </Container>
     </>
   );
