@@ -63,12 +63,12 @@ const Cryptocurencies = ({ simplified }) => {
                 <Card
                   sx={{
                     bgcolor:
-                      currency.change > 0
+                      currency.change < 0
                         ? "rgba(186, 4, 2, 0.1)"
                         : "rgba(26, 137, 23, 0.1)",
                     border: 1,
                     borderColor:
-                      currency.change > 0
+                      currency.change < 0
                         ? "rgba(186, 4, 2, 0.4)"
                         : "rgba(26, 137, 23, 0.4)",
                     display: "flex",

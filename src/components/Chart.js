@@ -9,9 +9,6 @@ const Chart = ({ coinHistory, currentPrice, coinName }) => {
 
   for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
     coinPrice.push(coinHistory?.data?.history[i].price);
-  }
-
-  for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
     coinTimestamp.push(
       new Date(coinHistory?.data?.history[i].timestamp).toLocaleDateString()
     );
@@ -21,10 +18,11 @@ const Chart = ({ coinHistory, currentPrice, coinName }) => {
     labels: coinTimestamp,
     datasets: [
       {
+        label: "price",
         data: coinPrice,
-        fill: false,
-        backgroundColor: "#0071bd",
-        borderColor: "#0071bd",
+        fill: true,
+        backgroundColor: "rgba(16, 116, 229, 0.3)",
+        borderColor: "rgba(16, 116, 229, 0.8)",
       },
     ],
   };
