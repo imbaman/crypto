@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500;700;900&display=swap");
+
 :root {
   --main-color: #69dadb;
 }
@@ -5,6 +7,7 @@
 .App {
   display: flex;
   background-color: red;
+  /* font-family: "Outfit", sans-serif; */
   /* justify-content: center; */
   /* max-width: 1200px;
    */
@@ -16,6 +19,7 @@
 }
 a {
   text-decoration: none;
+  color: rgb(255, 255, 255);
 }
 /* .footer {
   position: absolute;

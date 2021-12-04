@@ -17,6 +17,8 @@ const theme = createTheme({
     background: {
       main: "rgb(33, 33, 33)",
       second: "rgb(38,38,38)",
+      misc: "#DD4A48",
+      blue: "rgba(16, 116, 229, 0.3)",
     },
     text: {
       primary: "rgb(255, 255, 255)",
@@ -26,12 +28,19 @@ const theme = createTheme({
       active: "#001E3C",
     },
   },
+  typography: {
+    fontFamily: ["Outfit"].join(","),
+  },
 });
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
+      <CssBaseline
+        sx={{
+          fontFamily: "Outfit",
+        }}
+      />
       <Router>
         <div className='App'>
           <Navbar />
@@ -54,7 +63,9 @@ function App() {
         </div>
       </Router>
       <Box>
-        <Typography sx={{ bgcolor: "#D1E8E4", p: 2 }} align='center'>
+        <Typography
+          sx={{ bgcolor: "background.main", p: 2, borderTop: 1 }}
+          align='center'>
           footer
         </Typography>
       </Box>
