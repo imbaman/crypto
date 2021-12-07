@@ -10,7 +10,6 @@ const Layout = ({ children }) => {
         sx={{
           bgcolor: "background.main",
           color: "#00000",
-
           width: "100%",
           //   maxWidth: "xs",
           // height: "100vh",
@@ -18,7 +17,9 @@ const Layout = ({ children }) => {
           flexDirection: "column",
           alignItems: "flex-start",
           // minWidth: "1500px",
-          p: 4,
+          pt: { xs: "75px", md: "50px" },
+          pl: { xs: 4, md: 10 },
+          pr: { xs: 4, md: 10 },
         }}
         lg={{ minWidth: "1200px" }}>
         {children}
