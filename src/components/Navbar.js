@@ -16,7 +16,7 @@ import {
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Cloud, Home } from "@mui/icons-material";
-import { red } from "@mui/material/colors";
+import { red, yellow, lightBlue } from "@mui/material/colors";
 import { Box } from "@mui/system";
 const drawerWidth = 200;
 
@@ -30,40 +30,49 @@ const Navbar = (props) => {
   const drawerContent = (
     <Box>
       <Box p={2} sx={{ display: "flex", alignItems: "center" }}>
-        <Avatar />
-        <Typography
-          sx={{ fontSize: "24px", marginLeft: "5px", fontWeight: 700 }}>
-          <Link to='/'>Test Logo</Link>
-        </Typography>
+        <Avatar
+          component={Link}
+          to={"/"}
+          sx={{ width: "50px", height: "50px", bgcolor: lightBlue[300] }}>
+          Logo
+        </Avatar>
       </Box>
-      <Divider sx={{ borderBottom: 1, color: "rgba(38, 38, 38, 0.3)" }} />
+      <Divider sx={{ borderBottom: 1, color: "rgb(255,255,255,0.3)" }} />
       <Box>
         <MenuList
           id='fade-menu'
           sx={{
             fontSize: "20px",
+            fontWeight: "500",
+            pt: 5,
+            // letterSpacing: "3px",
           }}>
           <MenuItem
             sx={{
-              fontSize: "20px",
-              "& :hover": { backgroundColor: "background.misc" },
-            }}>
+              fontSize: "17px",
+            }}
+            component={Link}
+            to={"/"}
+            content>
             <ListItemIcon>
-              <Home fontSize='medium' color='success' />
+              <Home fontSize='medium' sx={{ mr: 4 }} />
             </ListItemIcon>
-            <Link to='/'>Home </Link>
+            Home
           </MenuItem>
-          <MenuItem sx={{ fontSize: "20px" }}>
+          <MenuItem sx={{ fontSize: "17px" }} component={Link} to={"/crypto"}>
             <ListItemIcon>
-              <Cloud fontSize='medium' />
+              <Cloud fontSize='medium' sx={{ mr: 4 }} />
             </ListItemIcon>
-            <Link to='/crypto'>Crypto </Link>
+            Crypto
           </MenuItem>
-          <MenuItem sx={{ fontSize: "20px" }}>
+          <MenuItem
+            sx={{ fontSize: "17px" }}
+            component={Link}
+            to={"/exchanges"}>
             <ListItemIcon>
-              <Cloud fontSize='medium' />
+              <Cloud fontSize='medium' sx={{ mr: 4 }} />
             </ListItemIcon>
-            <Link to='/exchanges'>Exchange </Link>
+            Exchange
           </MenuItem>
         </MenuList>
       </Box>
@@ -104,6 +113,7 @@ const Navbar = (props) => {
             color: "rgba(38, 38, 38, 0.3)",
             bgcolor: "background.second",
             borderRight: 1,
+            borderColor: "rgb(255,255,255,0.3)",
           },
         }}
         variant='permanent'

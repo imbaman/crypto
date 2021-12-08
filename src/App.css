@@ -12,10 +12,16 @@
   /* max-width: 1200px;
    */
 }
-.navbar {
-  /* margin-top: 10px; */
-  /* padding: 1rem; */
-  /* idk men */
+.MuiMenuItem-gutters.MuiMenuItem-root:hover {
+  background-color: rgb(255, 255, 255, 0.1);
+}
+.MuiMenuItem-gutters.MuiMenuItem-root {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: rgb(255, 255, 255);
+}
+.MuiSvgIcon-root {
+  color: rgb(255, 255, 255);
 }
 a {
   text-decoration: none;
